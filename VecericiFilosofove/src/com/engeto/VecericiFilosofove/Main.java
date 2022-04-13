@@ -4,25 +4,24 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int pocetFilozofuAVidlicek = 10;
-        int nasycen = 10000;
+        int numberOfPhilosophersAndForks = 10;
+        int full = 10000;
 
-        Filozof[] filozofove = new Filozof[pocetFilozofuAVidlicek];
-        Vidlicka[] vidlicky = new Vidlicka[pocetFilozofuAVidlicek];
+        Philosopher[] philosophers = new Philosopher[numberOfPhilosophersAndForks];
+        Fork[] forks = new Fork[numberOfPhilosophersAndForks];
 
         try {
-            for (int i = 0; i < pocetFilozofuAVidlicek; i++){
-                vidlicky[i] = new Vidlicka(i + 1);
-                filozofove[i] = new Filozof(i + 1,nasycen, vidlicky[i], vidlicky[(i + 1) % pocetFilozofuAVidlicek]);
+            for (int i = 0; i < numberOfPhilosophersAndForks; i++){
+                forks[i] = new Fork(i + 1);
             }
-            for (int i = 0; i < pocetFilozofuAVidlicek; i++){
-                filozofove[i] = new Filozof(i + 1,nasycen, vidlicky[i], vidlicky[(i + 1) % pocetFilozofuAVidlicek]);
+            for (int i = 0; i < numberOfPhilosophersAndForks; i++){
+                philosophers[i] = new Philosopher(i + 1,full, forks[i], forks[(i + 1) % numberOfPhilosophersAndForks]);
 
             }
-        } catch (Exception e) {
+        } catch (Exception e){
             e.printStackTrace();
         }
-        for ( Filozof filozof : filozofove ) {
+        for ( Philosopher filozof : philosophers ) {
             filozof.start();
         }
     }
