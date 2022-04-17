@@ -140,11 +140,8 @@ public class Item implements GoodsMethods {
         closeDB();
     }
 
-    public void printDB(){
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/eshop", "root", "toor")) {
-            Statement statement = con.createStatement();
-            statement.executeQuery("SELECT * FROM item;");
-            ResultSet result = statement.getResultSet();
+    public void printDB() throws SQLException {
+        initDB("SELECT * FROM item;");
 
             while (result.next()){
                 System.out.println(
@@ -157,9 +154,7 @@ public class Item implements GoodsMethods {
                         + result.getBigDecimal("price")
                 );
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void initDB(String sqlQuery) throws SQLException {
