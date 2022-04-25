@@ -14,17 +14,15 @@ public class Fork {
         lock = new ReentrantLock();
     }
 
-    public boolean pickUpFork(Philosopher philosopher) throws InterruptedException{
+    public boolean pickUpFork() throws InterruptedException{
         if (lock.tryLock(10, TimeUnit.MILLISECONDS)) {
-            System.out.println(philosopher + " pick up " + this);
             return true;
         }
         else {    return false;      }
     }
 
-    public void downFork(Philosopher philosopher) {
+    public void downFork() {
         lock.unlock();
-        System.out.println(philosopher + " down " + this);
     }
 
     @Override

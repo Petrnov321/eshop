@@ -22,12 +22,16 @@ public class Philosopher extends Thread{
         try {
             while (pieceOfFood < full){
                 think();
-                if (leftFork.pickUpFork(this)){
-                    if(rightFork.pickUpFork(this)){
+                if (leftFork.pickUpFork()){
+                    System.out.println(this + " picked up " + leftFork);
+                    if(rightFork.pickUpFork()){
+                        System.out.println(this + " picked up " + rightFork);
                         eat();
-                        rightFork.downFork(this);
+                        rightFork.downFork();
+                        System.out.println(this + " laid down " + rightFork);
                     }
-                    leftFork.downFork(this);
+                    leftFork.downFork();
+                    System.out.println(this + " laid down " + leftFork);
                 }
             }
         } catch (Exception e) {
