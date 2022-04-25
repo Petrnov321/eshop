@@ -5,7 +5,7 @@ package com.engeto.VecericiFilosofove;
 public class Philosopher extends Thread{
 
     private int id;
-    private int pieceOfFood = 0;//hodnata kolik porcí jídla filozof spořádal
+    private int pieceOfFood;//hodnata kolik porcí jídla filozof spořádal
     private int full;//hodnota kdy bude filozof nasycen
     private Fork rightFork, leftFork;
 
@@ -20,11 +20,11 @@ public class Philosopher extends Thread{
     @Override
     public void run() {
         try {
-            while (pieceOfFood < full){
+            while (pieceOfFood < full) {
                 think();
-                if (leftFork.pickUpFork()){
+                if (leftFork.pickUpFork()) {
                     System.out.println(this + " picked up " + leftFork);
-                    if(rightFork.pickUpFork()){
+                    if (rightFork.pickUpFork()) {
                         System.out.println(this + " picked up " + rightFork);
                         eat();
                         rightFork.downFork();
@@ -39,7 +39,7 @@ public class Philosopher extends Thread{
         }
     }
 
-    private void eat() throws InterruptedException{
+    private void eat() throws InterruptedException {
 
         System.out.println(this + " eat");
         pieceOfFood++;
@@ -47,7 +47,7 @@ public class Philosopher extends Thread{
         Thread.sleep(300);
     }
 
-    private void think() throws InterruptedException{
+    private void think() throws InterruptedException {
         System.out.println(this + " thinking...");
         Thread.sleep(300);
     }

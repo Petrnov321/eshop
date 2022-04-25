@@ -14,11 +14,13 @@ public class Fork {
         lock = new ReentrantLock();
     }
 
-    public boolean pickUpFork() throws InterruptedException{
+    public boolean pickUpFork() throws InterruptedException {
         if (lock.tryLock(10, TimeUnit.MILLISECONDS)) {
             return true;
         }
-        else {    return false;      }
+        else {
+            return false;
+        }
     }
 
     public void downFork() {
