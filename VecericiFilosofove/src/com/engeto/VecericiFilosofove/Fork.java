@@ -15,12 +15,7 @@ public class Fork {
     }
 
     public boolean pickUpFork() throws InterruptedException {
-        if (lock.tryLock(10, TimeUnit.MILLISECONDS)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+       return lock.tryLock(10, TimeUnit.MILLISECONDS);
     }
 
     public void downFork() {
