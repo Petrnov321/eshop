@@ -9,28 +9,41 @@ public class Main {
     public static void main(String[] args) throws SQLException {
 	// write your code here
 
-        Item item = new Item();
 
-        //item.loadItemById(5);
-        //System.out.println(item);
+        Database db = new Database();
 
-        //item.deleteAllOutOfStockItems();
-        //item.printDB();
+        /*
+        Item firstLoadedItem = db.loadItemById(1);
+        Item secondLoadedItem = db.loadItemById(2);
+        System.out.println(firstLoadedItem);
+        System.out.println(secondLoadedItem);
+        */
 
-       /*
-        List<Item> items = item.loadAllAvailableItems();
+
+        //System.out.println(db.loadItemById(5));
+
+        /*
+        db.printDB();
+        System.out.println();
+        db.deleteAllOutOfStockItems();
+        db.printDB();
+        */
+
+        /*
+        List<Item> items = db.loadAllAvailableItems();
         for (Item item1: items) {
             System.out.println(item1);
         }
         */
 
-        //item.saveItem(item);
-        //item.printDB();
-
         /*
-        item.updatePrice(3, new BigDecimal("15.0"));
-        item.loadItemById(3);
-        System.out.println(item);
+        Item item = db.loadItemById(5);
+        db.saveItem(item);
+        db.printDB();
         */
+
+        //db.updatePrice(3, new BigDecimal("15.0"));
+        //System.out.println(db.loadItemById(3));
+
     }
 }
